@@ -34,6 +34,30 @@ namespace AspNetCoreBackend.Controllers
             return View();
         }
 
+        public IActionResult Kortit()
+        {
+            List<Kortti> kortit = new List<Kortti>()
+            {
+                new Kortti()
+                {
+                    Sana = "Olut",
+                    Kaannos = "Beer"
+                },
+                new Kortti()
+                {
+                    Sana = "Koti",
+                    Kaannos = "Home"
+                },
+                new Kortti()
+                {
+                    Sana = "Kuppi",
+                    Kaannos = "Cup"
+                }
+            };
+
+            return View(kortit);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
