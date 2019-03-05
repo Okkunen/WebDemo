@@ -41,17 +41,17 @@ namespace AspNetCoreBackend.Controllers
                 new Kortti()
                 {
                     Sana = "Olut",
-                    Kaannos = "Beer"
+                    Kaannos = "맥주"
                 },
                 new Kortti()
                 {
                     Sana = "Koti",
-                    Kaannos = "Home"
+                    Kaannos = "집"
                 },
                 new Kortti()
                 {
                     Sana = "Kuppi",
-                    Kaannos = "Cup"
+                    Kaannos = "컵"
                 }
             };
 
