@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AspNetCoreBackend.Models;
+using AspNetCoreBackend.Database;
 
 namespace AspNetCoreBackend.Controllers
 {
@@ -36,26 +37,10 @@ namespace AspNetCoreBackend.Controllers
 
         public IActionResult Kortit()
         {
-            List<Kortti> kortit = new List<Kortti>()
-            {
-                new Kortti()
-                {
-                    Sana = "Olut",
-                    Kaannos = "맥주"
-                },
-                new Kortti()
-                {
-                    Sana = "Koti",
-                    Kaannos = "집"
-                },
-                new Kortti()
-                {
-                    Sana = "Kuppi",
-                    Kaannos = "컵"
-                }
-            };
+            KorttiappiContext context = new KorttiappiContext();
+            List<Kortit> allKortit = context.Kortit.ToList();
 
-            return View(kortit);
+            return View(allKortit);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

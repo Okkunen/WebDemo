@@ -1,68 +1,47 @@
-﻿
+﻿@model IEnumerable<AspNetCoreBackend.Database.Kortit>
+
 @{
     ViewData["Title"] = "Kortit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Kortit</h2>
 
-<table class="table table-striped">
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
     <thead>
         <tr>
-            <th>Sana</th>
-            <th>Käännös</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kaannos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KategoriaId)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (AspNetCoreBackend.Models.Kortti kortti in Model)
-        {
-            <tr>
-                <td>@kortti.Sana</td>
-                <td>@kortti.Kaannos</td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kaannos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KategoriaId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.KorttiId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.KorttiId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.KorttiId">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-
-<!-- Rotating card -->
-<div class="card-wrapper">
-    <div id="card-1" class="card card-rotating text-center">
-
-        <!-- Front Side -->
-        <div class="face front">
-
-            <!-- Image-->
-            <div class="card-up">
-                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Image with a photo of clouds.">
-            </div>
-
-            <!-- Content -->
-            <div class="card-body">
-                <h4 class="font-weight-bold mb-3">Marie Johnson</h4>
-                <p class="font-weight-bold blue-text">Web developer</p>
-                <!-- Triggering button -->
-                <a class="rotate-btn" data-card="card-1"><i class="fas fa-redo-alt"></i> Click here to rotate</a>
-            </div>
-        </div>
-        <!-- Front Side -->
-        <!-- Back Side -->
-        <div class="face back">
-            <div class="card-body">
-
-                <!-- Content -->
-                <h4 class="font-weight-bold mb-0">About me</h4>
-                <hr>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat tenetur odio suscipit non commodi vel
-                    eius veniam maxime?
-                    <hr>
-                    <!-- Triggering button -->
-                    <a class="rotate-btn" data-card="card-1"><i class="fas fa-undo"></i> Click here to rotate back</a>
-
-            </div>
-        </div>
-        <!-- Back Side -->
-
-    </div>
-</div>
-<!-- Rotating card -->
