@@ -24,6 +24,15 @@ namespace AspNetCoreBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("OmaCorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                });
+            });
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -47,7 +56,7 @@ namespace AspNetCoreBackend
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            app.UseCors("OmaCorsPolicy");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
